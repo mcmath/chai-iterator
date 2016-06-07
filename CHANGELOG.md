@@ -1,3 +1,12 @@
+# v1.0.2
+
+###### June 7, 2016
+
+#### Maintenance
+
+- Fixed errors in `README.md`
+- Added name of package to `typings.json`
+
 # v1.0.1
 
 ###### June 6, 2016
