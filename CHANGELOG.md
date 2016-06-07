@@ -1,3 +1,11 @@
+# v1.0.1
+
+###### June 6, 2016
+
+#### Fix
+
+- Added ESLint to development dependencies
+
 # v1.0.0
 
 ###### June 6, 2016

@@ -61,6 +61,7 @@
     "coffee-script": "^1.10.0",
     "core-js": "^2.4.0",
     "coveralls": "^2.11.9",
+    "eslint": "^2.11.1",
     "istanbul": "1.0.0-alpha.2",
     "mocha": "^2.5.3",
     "rimraf": "^2.5.2",
