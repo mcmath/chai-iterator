@@ -1,0 +1,35 @@
+language: node_js
+node_js:
+  - "6"
+  - "5"
+  - "4"
+  - "0.12"
+  - "0.10"
+before_script:
+  - npm run typings
+after_success:
+  - npm run coveralls
+before_deploy:
+  - npm run build
+deploy:
+  - provider: npm
+    email:
+      secure: Q9rVGng2+9nSx5KNwgeU77aEcZVeAp5T89w9YwcikKWcUo7L0VBBUpWqkvLUf9GXdkugA7/p5hwfClI60SqfPpUhL/UkDcXEbazxrN/SrrMhEqySrxNCz4pVXqgXb9/fIplFmxV9wsP5HIjXXPWqDYhjGJOrs2Hvz+ia8MozAHPXu1YsecSFMa3a3DEa/Qaq3x2gIvrudbRhUKzlJtilqFPNQ/um/L4ALR/6kdJJtj14K/hrG6jjqRMEpve1vCOUcuslke3vlzKI8t6rmuinPoHcG+SievEtmUnpVHvXmUdo0BSjFj61ugLLYyPPV1yW/TLZdsT4eH/ToP1gTgulCK+ympukZfsJc+6K9Dt++8sLdMG2GnD7keKorsDHtnqarnLft+Hm80T3KvZnPRAE234Fh6X6MGzZpS1nPyHuI3EMESgkXhQ36WkCSxXSvkTV5KJf/clw0w7wna6o0oaZSaiSI4JNU7m3I4zbWyX4uRNHBsnzZpHhoETtgZFvRLUpciBOFW30fRaMzZhV2+vY7QihelNJv8rDwFh4QRlNSZw7Re9oeGfG8oe6f2NIol33XvWSeIpZxcdVVEEI053a/kVMofRnYkzDkTfuZIHnHaHxUPCACzVhgcPosyeJu/OsIYxuee7m/SDojXYYypd/EDEMbf1sAw64KQEc4avJRy0=
+    api_key:
+      secure: Kxxi3nmwyDjlSMlWIEO7LiD2V1iHa0GVp1JXaZDYRvFoThgJ4KUF4/yXBzKKWH3gfAMFRxXqj+gs+ax0JMBG1ASvoKTc7bSYhr3qpF5Jfq8maO09kH3eUU1ydHfzyd1176LWybxr3ZA+BP5ttxiAFvOr7LrhTN8KAKzsDDePjOkh/Z90UiKpLH6uTHycXnA/7peT5E1rEZ1DbFD+N9WEqp3joXNMDNvOGSHU6Q46cDIVtfo+pG664vegP9+5tWeUEvmZsI6iBL76HtZ1imueGUBLC+Tks8eVlnBj6ZsCSxFRpxWDkbpltUHkPIsm730GOMicaR/DC55WBwMoI4Dq7Ph00NuCjUBUZkbGdQ5JuuoiCgM4UKv+Oo8IKkszMKA5bZtrjXx1XQSWb63CPOMcWDli4tQiG87CacRqU1goJ/gCzskEj4bH3rbLCNXzkczq/T6Nk8JK8l1OlYPPu8CVFMdcrGuNMpcs5gNJ+0hs+e5a152hKxhR3EONm1fPFh7dUdQ8OVyBZDTKwUKIXDK/GDCzAJo0sqX7OQ7inT3IaUwKqo7T9rl8yVfn821fzZktaSHf3RNdayY/MZ8CZX+alecfWZXbbWdmoCKqx/jNAIYGCHzkJqo1hqGArLeKsPHruMrw8EV7EiEp48kVwTy62hISsKmN0TvTlXBRhXhc+JA=
+    skip_cleanup: true
+    on:
+      repo: akim-mcmath/chai-iterator
+      node: "4"
+      tags: true
+  - provider: releases
+    api_key:
+      secure: xwJSqwRPQ17cj1RuEONUMV7ThixhVj2xQb0H/fkPNYXSKa25KLKpL9a1yBHQmLplhX/w+VBYQqrKcwaBtIXt48CQg5z83hmhLuJhE+yr6tqWBDcHo7zEwsSQ1GjhJwfue88vLnjw3PfyFbX5jFQ9QG5a459OsFKRwsZeEDEuYuGaFZVxvyqnhIPzmAGwNyERaoVoXn560K/i7Nu/eHepRyAlCjkXfC6OEFJwhzr24aUUFPGfwcKJXqUf4TOVCoqTilTmNslW9HFQYBZwgEqklTpEK/tjlUUgV+3ZRLCse+D2ZCtzbs8nvvUIGLFmvDKJc8OBRkgJ2BJntfFXO+6YBxPU1IP/Sz2e8+AG9m/q/4ooSkJh3ArCRWhpttlTMJszKAn7PFBP+kyavIAMvg30Xpdq6nTxNcXR83sPf8KCfYU7nvqA9KetizXK07FxYDO9/MQSIn9FdbiP4jzR4P4d7QEyY1qCkXYyZB4nA4u+hnosqRoEoY/rRRDLrqpFryejQvoyXmvp8iz6/aKLuGNdXOPNbM/cMrMNtNmIjWrIy6Rcd+EfOTyMBLvvXPS0MzhFPs3C7N9R8zIk2I3oeD7okLbbQ71t1E/7pkvYzXV0QenVdlO2lAmGxjHMJ7aM7zwXhCOIPUIDSN079eDxBId+P0LDsE3B1KuupibfEHzoxO8=
+    file: chai-iterator.js
+    skip_cleanup: true
+    on:
+      repo: akim-mcmath/chai-iterator
+      node: "4"
+      tags: true
+after_deploy:
+  - npm run unbuild

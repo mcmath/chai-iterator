@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "noEmit": true
+  },
+  "files": [
+    "typings/index.d.ts",
+    "chai-iterator.d.ts",
+    "test/typescript/chai-iterator.ts"
+  ],
+  "compileOnSave": false
+}
