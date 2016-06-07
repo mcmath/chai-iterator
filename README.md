@@ -91,8 +91,8 @@ tens.should.iterate.from([10, 20, 30]);
 tens.should.iterate.from([10, 20, 30, 40, 50]);
 ```
 
-Just don't go trying to use [`over()`](#iteratefromexpected) or
-[`until()`](#iteratefromexpected) on infinite sequences. The former will always
+Just don't go trying to use [`over()`](#iterateoverexpected) or
+[`until()`](#iterateuntilexpected) on infinite sequences. The former will always
 fail; the latter will never stop.
 
 #### Generators and iterators
