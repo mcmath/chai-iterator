@@ -126,8 +126,8 @@ fiborator.should.iterate.from([8, 13, 21, 34]);
 It usually makes more sense to construct a new `Generator` for each test.
 
 ```js
-fiborator().should.iterate.from([1, 1, 2, 3, 5]);
-fiborator().should.iterate.from([1, 1, 2, 3, 5, 8, 13]);
+fibonacci().should.iterate.from([1, 1, 2, 3, 5]);
+fibonacci().should.iterate.from([1, 1, 2, 3, 5, 8, 13]);
 ```
 
 ## Compatibility
