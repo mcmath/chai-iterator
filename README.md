@@ -21,7 +21,7 @@
 **Chai Iterator** extends the [Chai][chai] assertion library with methods for
 testing [iterable][iterable] objects. Introduced in the
 [ES2015 specification][ecma-iterable], iterable objects have an
-[@@iterator][iterator-method] method, which allows us iterate over them with a
+[`@@iterator`][iterator-method] method, which allows us iterate over them with a
 [`for...of`][for-of] loop. A number of [built-in][built-in-iterable] types are
 iterable by default, while [custom iterable objects][custom-iterable] may also
 be defined. Chai Iterator makes it easy to test all such objects.
@@ -114,7 +114,7 @@ fibonacci().should.iterate.from([1, 1, 2, 3, 5]);
 ```
 
 Be careful though. Iterators can't go back in time. Once a value has
-been yielded, it is lost forever. And that's why the following assertions pass.
+been yielded, it is lost forever. And so the following assertions pass.
 
 ```js
 let fiborator = fibonacci();
@@ -123,7 +123,7 @@ fiborator.should.iterate.from([1, 1, 2, 3, 5]);
 fiborator.should.iterate.from([8, 13, 21, 34]);
 ```
 
-It usually makes more sense to construct a new `Generator` for each test.
+It usually makes more sense to construct a new `Generator` for each assertion.
 
 ```js
 fibonacci().should.iterate.from([1, 1, 2, 3, 5]);
