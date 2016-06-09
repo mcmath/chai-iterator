@@ -21,8 +21,8 @@
 **Chai Iterator** extends the [Chai][chai] assertion library with methods for
 testing [iterable][iterable] objects. Introduced in the
 [ES2015 specification][ecma-iterable], iterable objects have an
-[`@@iterator`][iterator-method] method, which allows us iterate over them with a
-[`for...of`][for-of] loop. A number of [built-in][built-in-iterable] types are
+[`@@iterator`][iterator-method] method, which allows us to iterate over them with
+a [`for...of`][for-of] loop. A number of [built-in][built-in-iterable] types are
 iterable by default, while [custom iterable objects][custom-iterable] may also
 be defined. Chai Iterator makes it easy to test all such objects.
 
