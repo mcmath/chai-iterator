@@ -148,10 +148,10 @@ require('core-js/fn/symbol/iterator');
 
 ## Installation
 
-Install Chai Iterator using [npm][npm].
+Install Chai Iterator using [npm][npm]. And be sure, of course, to install [chai][chai-npm].
 
 ```sh
-npm install --save chai-iterator
+npm install --save chai chai-iterator
 ```
 
 ## Setup
@@ -494,3 +494,4 @@ Copyright &copy; 2016 Akim McMath. Licensed under the [MIT License][license].
 [compiler-options]: https://www.typescriptlang.org/docs/handbook/compiler-options.html
 [es6-lib]: https://github.com/Microsoft/TypeScript/blob/master/lib/lib.es6.d.ts
 [deep]: http://chaijs.com/api/bdd/#method_deep
+[chai-npm]: https://www.npmjs.com/package/chai
