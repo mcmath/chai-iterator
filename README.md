@@ -148,7 +148,7 @@ require('core-js/fn/symbol/iterator');
 
 ## Installation
 
-Install Chai Iterator using [npm][npm]. And be sure, of course, to install [chai][chai-npm].
+Install Chai Iterator using [npm][npm]. And be sure, of course, to install [Chai][chai-npm].
 
 ```sh
 npm install --save chai chai-iterator
