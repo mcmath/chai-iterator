@@ -320,7 +320,7 @@ The parameters for the assert methods are as follows.
 #### `isIterable(value, [message])`
 
 Asserts that a value is an iterable object, i.e., that it is an object with
-an [@@iterator][iterator-method] method.
+an [`@@iterator`][iterator-method] method.
 
 ```js
 assert.isIterable([2, 3, 5]);
@@ -330,7 +330,7 @@ assert.isIterable('abcdefg');
 #### `isNotIterable(value, [message])`
 
 Asserts that a value is not an iterable object, i.e., that it lacks an
-[@@iterator][iterator-method] method.
+[`@@iterator`][iterator-method] method.
 
 ```js
 assert.isNotIterable(235);
