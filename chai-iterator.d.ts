@@ -26,16 +26,20 @@ declare module "chai/lib/Assertion" {
 
   interface Assertion {
     iterable: Assertion;
-    iterate: Assertion;
-    over(values: any[]): Assertion;
-    from(values: any[]): Assertion;
-    until(values: any[]): Assertion;
+    iterate: {
+      over(values: Iterable<any>): Assertion;
+      from(values: Iterable<any>): Assertion;
+      until(values: Iterable<any>): Assertion;
+    };
   }
 
   interface Deep {
-    iterate: Assertion;
+    iterate: {
+      over(values: Iterable<any>): Assertion;
+      from(values: Iterable<any>): Assertion;
+      until(values: Iterable<any>): Assertion;
+    };
   }
-
 }
 
 declare function chaiIterator(chai: any, utils: any): void;
