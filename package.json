@@ -1,6 +1,6 @@
 {
   "name": "chai-iterator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Chai assertions for iterable objects",
   "main": "chai-iterator.js",
   "typings": "chai-iterator.d.ts",
