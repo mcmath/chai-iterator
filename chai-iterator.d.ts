@@ -1,4 +1,5 @@
-import "chai";
+import "~chai/lib/Assert";
+import "~chai/lib/Assertion";
 
 declare module "~chai/lib/Assert" {
 
