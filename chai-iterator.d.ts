@@ -1,4 +1,6 @@
-declare module "chai/lib/Assert" {
+import "chai";
+
+declare module "~chai/lib/Assert" {
 
   interface Assert {
     isIterable(val: any, msg?: string): void;
@@ -22,7 +24,7 @@ declare module "chai/lib/Assert" {
 
 }
 
-declare module "chai/lib/Assertion" {
+declare module "~chai/lib/Assertion" {
 
   interface Assertion {
     iterable: Assertion;

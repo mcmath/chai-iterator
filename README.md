@@ -200,11 +200,11 @@ function will also be available globally as `chaiIterator`.
 #### TypeScript
 
 [TypeScript][typescript] declarations are included in the package. To use them,
-first ensure the [npm declarations for Chai][chai-typings] are installed via
-[typings][typings].
+ensure Chai Iterator is installed with [npm][npm], then install the declarations
+and their dependencies via [typings][typings].
 
 ```sh
-typings install npm~chai --save
+typings install --save-dev npm:chai-iterator
 ```
 
 In the [compiler options][compiler-options], set `"target"` to `"es6"`, or at
