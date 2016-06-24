@@ -1,5 +1,5 @@
 chai = require 'chai'
-chaiIterator = require '../src'
+chaiIterator = require '../'
 polyfill = require './helpers/polyfill'
 
 before ->
