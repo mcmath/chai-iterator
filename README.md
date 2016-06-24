@@ -376,9 +376,10 @@ expect([2, 3, 5]).not.to.iterate.for.length.of.at.most(2);
 
 Asserts that the target yields between *min* and *max* values, inclusive.
 
-| Param  | Type     | Description         |
-| :----- | :------- | :------------------ |
-| n      | `number` | A positive integer  |
+| Param  | Type     | Description          |
+| :----- | :------- | :------------------- |
+| min    | `number` | A positive integer   |
+| max    | `number` | A positive integer   |
 
 ```js
 expect([2, 3, 5]).to.iterate.for.length.within(2, 4);
