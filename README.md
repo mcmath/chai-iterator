@@ -404,7 +404,7 @@ expect([2, 3, 5]).not.to.iterate.for.length.within(4, 7);
 - [`doesNotIterateUntil()`](#doesnotiterateuntilvalue-expected-message)
 - [`deepIteratesUntil()`](#deepiteratesuntilvalue-expected-message)
 - [`doesNotDeepIterateUntil()`](#doesnotdeepiterateuntilvalue-expected-message)
-- [`lengthOf()`](#lengthofvalue-expected-message)
+- [`lengthOf()`](#lengthofvalue-n-message)
 
 #### Parameters
 
@@ -558,7 +558,7 @@ assert.doesNotDeepIterateUntil([[0, 2], [1, 3]], [[0, 2]]);
 #### `lengthOf(value, n, [message])`
 
 Asserts that an iterable yields a given number of values. If *value* is not an
-iterable object, or if it has a `'length'` property, Chai's native
+iterable object, or if it has a `'length'` property, Chai's built-in
 [`assert.lengthOf()`][chai-assert-lengthof] will be used.
 
 ```js

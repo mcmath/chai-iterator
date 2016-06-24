@@ -70,8 +70,8 @@
 
         this.assert(
           len === exp,
-          'expected #{this} to iterate for length above #{exp}, but got #{act}',
-          'expected #{this} not to iterate for length above #{exp}',
+          'expected #{this} to iterate for length of #{exp}, but got #{act}',
+          'expected #{this} not to iterate for length of #{exp}',
           exp,
           len
         );
