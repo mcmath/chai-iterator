@@ -8,8 +8,6 @@ before_script:
   - npm run typings
 after_success:
   - npm run coveralls
-before_deploy:
-  - npm run build
 deploy:
   - provider: npm
     email:
@@ -30,5 +28,3 @@ deploy:
       repo: akim-mcmath/chai-iterator
       node: "4"
       tags: true
-after_deploy:
-  - npm run unbuild

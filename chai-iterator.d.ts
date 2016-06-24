@@ -30,6 +30,7 @@ declare module "~chai/lib/Assertion" {
   interface Assertion {
     iterable: Assertion;
     iterate: {
+      for: Assertion;
       over(values: Iterable<any>): Assertion;
       from(values: Iterable<any>): Assertion;
       until(values: Iterable<any>): Assertion;
