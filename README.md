@@ -39,6 +39,13 @@ Chai's `should()` [assertion style][assertion-style], just to be different.
 [2, 3, 5].should.iterate.from([2, 3]);
 [2, 3, 5].should.iterate.until([3, 5]);
 
+[2, 3, 5].should.iterate.for.lengthOf(3);
+[2, 3, 5].should.iterate.for.length.above(2);
+[2, 3, 5].should.iterate.for.length.below(4);
+[2, 3, 5].should.iterate.for.length.of.at.least(3);
+[2, 3, 5].should.iterate.for.length.of.at.most(3);
+[2, 3, 5].should.iterate.for.length.within(2, 4);
+
 [2, 3, 5].should.not.iterate.over([1, 2, 3]);
 [{n: 2}, {n: 3}].should.deep.iterate.from([{n: 2}]);
 ```
@@ -70,7 +77,7 @@ class Count {
     this.step = step;
   }
 
-  * [Symbol.iterator]() {
+  *[Symbol.iterator]() {
     for (let n = this.start; true; n += this.step) {
       yield n;
     }
@@ -104,7 +111,7 @@ Let's generate the [fibonacci sequence][fibonacci-sequence]. A
 iterable.
 
 ```js
-function * fibonacci() {
+function* fibonacci() {
   for (let [x, y] = [1, 1]; true; [x, y] = [y, x + y]) {
     yield x;
   }
@@ -229,6 +236,12 @@ chai.use(chaiIterator);
 - [`iterate.over()`](#iterateoverexpected)
 - [`iterate.from()`](#iteratefromexpected)
 - [`iterate.until()`](#iterateuntilexpected)
+- [`iterate.for.lengthOf()`](#iterateforlengthofn)
+- [`iterate.for.length.above()`](#iterateforlengthaboven)
+- [`iterate.for.length.below()`](#iterateforlengthbelown)
+- [`iterate.for.length.of.at.least()`](#iterateforlengthofatleastn)
+- [`iterate.for.length.of.at.most()`](#iterateforlengthofatmostn)
+- [`iterate.for.length.within()`](#iterateforlengthwithinmin-max)
 
 #### `iterable`
 
@@ -289,6 +302,90 @@ expect([2, 3, 5]).not.to.iterate.until([2, 3]);
 expect([{n: 2}, {n: 3}]).to.deep.iterate.until([{n: 3}]);
 ```
 
+#### `iterate.for.lengthOf(n)`
+
+Asserts that the target yields exactly *n* values.
+
+| Param  | Type     | Description         |
+| :----- | :------- | :------------------ |
+| n      | `number` | A positive integer  |
+
+```js
+expect([2, 3, 5]).to.iterate.for.lengthOf(3);
+expect('abcdefg').to.iterate.for.lengthOf(7);
+expect([2, 3, 5]).not.to.iterate.for.lengthOf(7);
+```
+
+#### `iterate.for.length.above(n)`
+
+Asserts that the target yields more than *n* values.
+
+| Param  | Type     | Description         |
+| :----- | :------- | :------------------ |
+| n      | `number` | A positive integer  |
+
+```js
+expect([2, 3, 5]).to.iterate.for.length.above(2);
+expect('abcdefg').to.iterate.for.length.above(5);
+expect([2, 3, 5]).not.to.iterate.for.length.above(3);
+```
+
+#### `iterate.for.length.below(n)`
+
+Asserts that the target yields fewer than *n* values.
+
+| Param  | Type     | Description         |
+| :----- | :------- | :------------------ |
+| n      | `number` | A positive integer  |
+
+```js
+expect([2, 3, 5]).to.iterate.for.length.below(4);
+expect('abcdefg').to.iterate.for.length.below(10);
+expect([2, 3, 5]).not.to.iterate.for.length.below(3);
+```
+
+#### `iterate.for.length.of.at.least(n)`
+
+Asserts that the target yields at least *n* values.
+
+| Param  | Type     | Description         |
+| :----- | :------- | :------------------ |
+| n      | `number` | A positive integer  |
+
+```js
+expect([2, 3, 5]).to.iterate.for.length.of.at.least(2);
+expect([2, 3, 5]).to.iterate.for.length.of.at.least(3);
+expect([2, 3, 5]).not.to.iterate.for.length.of.at.least(4);
+```
+
+#### `iterate.for.length.of.at.most(n)`
+
+Asserts that the target yields at most *n* values.
+
+| Param  | Type     | Description         |
+| :----- | :------- | :------------------ |
+| n      | `number` | A positive integer  |
+
+```js
+expect([2, 3, 5]).to.iterate.for.length.of.at.most(4);
+expect([2, 3, 5]).to.iterate.for.length.of.at.most(3);
+expect([2, 3, 5]).not.to.iterate.for.length.of.at.most(2);
+```
+
+#### `iterate.for.length.within(min, max)`
+
+Asserts that the target yields between *min* and *max* values, inclusive.
+
+| Param  | Type     | Description         |
+| :----- | :------- | :------------------ |
+| n      | `number` | A positive integer  |
+
+```js
+expect([2, 3, 5]).to.iterate.for.length.within(2, 4);
+expect([2, 3, 5]).to.iterate.for.length.within(3, 3);
+expect([2, 3, 5]).not.to.iterate.for.length.within(4, 7);
+```
+
 ## Assert API
 
 #### Assertions
@@ -307,6 +404,7 @@ expect([{n: 2}, {n: 3}]).to.deep.iterate.until([{n: 3}]);
 - [`doesNotIterateUntil()`](#doesnotiterateuntilvalue-expected-message)
 - [`deepIteratesUntil()`](#deepiteratesuntilvalue-expected-message)
 - [`doesNotDeepIterateUntil()`](#doesnotdeepiterateuntilvalue-expected-message)
+- [`lengthOf()`](#lengthofvalue-expected-message)
 
 #### Parameters
 
@@ -316,6 +414,7 @@ The parameters for the assert methods are as follows.
 | :------- | :------- | :--------------------------------------- |
 | value    | `any`    | Any value.                               |
 | expected | `object` | An iterable object.                      |
+| n        | `number` | A positive integer.                      |
 | message? | `string` | An optional message to display on error. |
 
 #### `isIterable(value, [message])`
@@ -456,6 +555,23 @@ assert.doesNotDeepIterateUntil([{n: 2}, {n: 3}], [{n: 5}]);
 assert.doesNotDeepIterateUntil([[0, 2], [1, 3]], [[0, 2]]);
 ```
 
+#### `lengthOf(value, n, [message])`
+
+Asserts that an iterable yields a given number of values. If *value* is not an
+iterable object, or if it has a `'length'` property, Chai's native
+[`assert.lengthOf()`][chai-assert-lengthof] will be used.
+
+```js
+function* range(min=0, max=Infinity, step=1) {
+  for (let n = min; n < max; n += step) {
+    yield n;
+  }
+}
+
+assert.lengthOf(range(0, 10), 10);
+assert.lengthOf(range(6, 42), 36);
+```
+
 ## License
 
 Copyright &copy; 2016 Akim McMath. Licensed under the [MIT License][license].
@@ -496,3 +612,4 @@ Copyright &copy; 2016 Akim McMath. Licensed under the [MIT License][license].
 [es6-lib]: https://github.com/Microsoft/TypeScript/blob/master/lib/lib.es6.d.ts
 [deep]: http://chaijs.com/api/bdd/#method_deep
 [chai-npm]: https://www.npmjs.com/package/chai
+[chai-assert-lengthof]: http://chaijs.com/api/assert/#method_lengthof

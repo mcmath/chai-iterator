@@ -16,6 +16,8 @@
   var Assertion = chai.Assertion;
   var assert = chai.assert;
 
+  var noop = function() {};
+
   var ELLIPSIS = unquote('...');
 
   // Expect/should assertions =============================
@@ -58,6 +60,129 @@
 
     return actual;
   }));
+
+  Assertion.addProperty('for', noop);
+
+  Assertion.overwriteMethod('lengthOf', function(_super) {
+    return function(exp) {
+        if (utils.flag(this, 'iterate')) {
+          var len = iterableLength(this._obj, exp);
+
+        this.assert(
+          len === exp,
+          'expected #{this} to iterate for length above #{exp}, but got #{act}',
+          'expected #{this} not to iterate for length above #{exp}',
+          exp,
+          len
+        );
+
+      } else {
+        _super.apply(this, arguments);
+      }
+    };
+  });
+
+  Assertion.overwriteMethod('above', function(_super) {
+    return function(exp) {
+      if (utils.flag(this, 'iterate')) {
+        var len = iterableLength(this._obj, exp);
+
+        this.assert(
+          len > exp,
+          'expected #{this} to iterate for length above #{exp}, but got #{act}',
+          'expected #{this} not to iterate for length above #{exp}',
+          exp,
+          len
+        );
+
+      } else {
+        _super.apply(this, arguments);
+      }
+    };
+  });
+
+  Assertion.overwriteMethod('below', function(_super) {
+    return function(exp) {
+      if (utils.flag(this, 'iterate')) {
+        var max = exp + 100;
+        var len = iterableLength(this._obj, max);
+        var act = len === Infinity ? unquote('more than ' + max) : len;
+
+        this.assert(
+          len < exp,
+          'expected #{this} to iterate for length below #{exp}, but got #{act}',
+          'expected #{this} not to iterate for length below #{exp}',
+          exp,
+          act
+        );
+
+      } else {
+        _super.apply(this, arguments);
+      }
+    };
+  });
+
+  Assertion.overwriteMethod('least', function(_super) {
+    return function(exp) {
+      if (utils.flag(this, 'iterate')) {
+        var len = iterableLength(this._obj, exp);
+
+        this.assert(
+          len >= exp,
+          'expected #{this} to iterate for length of at least #{exp}, but got #{act}',
+          'expected #{this} not to iterate for length of at least #{exp}',
+          exp,
+          len
+        );
+
+      } else {
+        _super.apply(this, arguments);
+      }
+    };
+  });
+
+  Assertion.overwriteMethod('most', function(_super) {
+    return function(exp) {
+      if (utils.flag(this, 'iterate')) {
+        var max = exp + 100;
+        var len = iterableLength(this._obj, max);
+        var act = len === Infinity ? unquote('more than ' + max) : len;
+
+        this.assert(
+          len <= exp,
+          'expected #{this} to iterate for length of at most #{exp}, but got #{act}',
+          'expected #{this} not to iterate for length of at most #{exp}',
+          exp,
+          act
+        );
+
+      } else {
+        _super.apply(this, arguments);
+      }
+    };
+  });
+
+  Assertion.overwriteMethod('within', function(_super) {
+    return function(min, max) {
+      if (utils.flag(this, 'iterate')) {
+        var cutoff = max + 100;
+        var len = iterableLength(this._obj, cutoff);
+        var exp = unquote(min + 'and' + max);
+        var act = len === Infinity ? unquote('more than ' + cutoff) : len;
+
+        this.assert(
+          min <= len && len <= max,
+          'expected #{this} to iterate for length within #{exp}, but got #{act}',
+          'expected #{this} not to iterate for length within #{exp}',
+          exp,
+          act
+        );
+
+      } else {
+        _super.apply(this, arguments);
+      }
+    };
+  });
 
   // Assert methods =======================================
 
@@ -117,6 +242,16 @@
     new Assertion(value, msg).not.deep.iterate.until(exp);
   };
 
+  var _lengthOf = assert.lengthOf;
+
+  assert.lengthOf = function(value, exp, msg) {
+    if (isIterable(value) && typeof value.length !== 'number') {
+      new Assertion(value, msg).iterate.for.lengthOf(exp);
+    } else {
+      _lengthOf.apply(assert, arguments);
+    }
+  }
+
   // Helpers ==============================================
 
   function iterateMethod(predicate, getActual) {
@@ -142,6 +277,20 @@
 
   function isIterable(value) {
     return value != null && typeof value[Symbol.iterator] === 'function';
+  }
+
+  function iterableLength(iterable, max) {
+    max = max == null ? Infinity : max;
+
+    var it = iterable[Symbol.iterator]();
+
+    for (var i = 0; i <= max; i++) {
+      if (it.next().done) {
+        return i;
+      }
+    }
+
+    return Infinity;
   }
 
   function strictEqual(a, b) {

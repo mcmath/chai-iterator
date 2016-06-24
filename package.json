@@ -8,6 +8,7 @@
     "test:tsc": "tsc",
     "test:eslint": "eslint chai-iterator.js",
     "test:mocha": "mocha",
+    "test:watch": "mocha -w",
     "test:cover": "istanbul cover _mocha",
     "test:report": "npm run test:cover && open coverage/lcov-report/index.html",
     "test": "npm run test:tsc && npm run test:eslint && npm run test:cover",
