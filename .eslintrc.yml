@@ -1,6 +1,8 @@
 extends: eslint:recommended
 parserOptions:
-  ecmaVersion: 6
-  sourceType: module
-env:
-  es6: true
+  ecmaVersion: 5
+globals:
+  chai: false
+  define: false
+  module: false
+  Symbol: false

@@ -1,8 +1,6 @@
 /coverage/
-/src/
 /test/
 /typings/
-/.babelrc
 /.editorconfig
 /.eslintrc.yml
 /.gitignore
