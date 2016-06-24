@@ -196,8 +196,7 @@ define((require, exports, module) => {
 #### HTML script tag
 
 Chai Iterator can be included via a [`<script>`][script-tag] tag. If it is
-loaded after `chai.js`, Chai will use it automatically. The plugin
-function will also be available globally as `chaiIterator`.
+loaded after `chai.js`, Chai will use it automatically.
 
 ```html
 <script src="chai.js"></script>
