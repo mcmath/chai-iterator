@@ -1,4 +1,5 @@
 err = require '../helpers/err'
+customIterableFactory = require '../fixtures/custom'
 
 describe 'expect/should: iterate.over(iterable)', ->
 
@@ -37,3 +38,10 @@ describe 'expect/should: iterate.over(iterable)', ->
     it 'throws whether negated or not', ->
       err -> [2, 3, 5].should.over [2, 3, 5]
       err -> [2, 3, 5].should.not.over [2, 3, 6]
+
+  context 'iterator returned by @@iterator is not itself iterable', ->
+
+    it 'works correctly', ->
+      iterable = customIterableFactory();
+      err -> iterable.should.iterate.over [2, 3, 5]
+      iterable.should.iterate.over [0, 1, 2]
