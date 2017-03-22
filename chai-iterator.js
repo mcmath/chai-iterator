@@ -44,7 +44,7 @@
   }));
 
   Assertion.addMethod('from', iterateMethod('to begin iteration with', function(exp) {
-    return slice(this._obj, exp.length);
+    return slice(this._obj[Symbol.iterator](), exp.length);
   }));
 
   Assertion.addMethod('until', iterateMethod('to end iteration with', function(exp) {
@@ -259,7 +259,7 @@
       assert(utils.flag(this, 'iterate'), 'the iterate flag must be set');
       new Assertion(iterable).iterable;
 
-      var exp = slice(iterable);
+      var exp = slice(iterable[Symbol.iterator]());
       var act = getActual.call(this, exp);
 
       var deep = utils.flag(this, 'deep') ? ' deep' : '';
@@ -305,12 +305,11 @@
     });
   }
 
-  function slice(iterable, stop) {
+  function slice(it, stop) {
     stop = stop == null ? Infinity : stop;
 
     var result = [];
     var max = stop - 1;
-    var it = iterable[Symbol.iterator]();
     var step = it.next();
 
     for (var i = 0; i <= max && !step.done; i++) {

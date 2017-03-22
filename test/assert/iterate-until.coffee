@@ -1,4 +1,5 @@
 {assert} = require 'chai'
+customIterableFactory = require '../fixtures/custom'
 err = require '../helpers/err'
 
 describe 'assert: iteratesUntil(value, expected, [message])', ->
@@ -82,3 +83,10 @@ describe 'assert: doesNotDeepIterateUntil(value, expected, [message])', ->
 
     it 'throws', ->
       err -> assert.doesNotDeepIterateUntil([{id: 1}, {id: 2}], [{id: 2}])
+
+  context 'iterator returned by @@iterator is not itself iterable', ->
+
+    it 'works correctly', ->
+      iterable = customIterableFactory();
+      err -> assert.iteratesUntil(iterable, [3, 5]);
+      assert.iteratesUntil(iterable, [1, 2]);
