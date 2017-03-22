@@ -574,7 +574,7 @@ assert.lengthOf(range(6, 42), 36);
 
 ## License
 
-Copyright &copy; 2016 Akim McMath. Licensed under the [MIT License][license].
+Copyright &copy; 2016&ndash;2017 Akim McMath. Licensed under the [MIT License][license].
 
 [version-badge]: https://img.shields.io/npm/v/chai-iterator.svg?style=flat-square
 [license-badge]: https://img.shields.io/npm/l/chai-iterator.svg?style=flat-square
