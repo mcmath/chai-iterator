@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
+    "target": "ES2015",
+    "module": "CommonJS",
     "noEmit": true
   },
   "files": [
-    "typings/index.d.ts",
     "chai-iterator.d.ts",
     "test/typescript/chai-iterator.ts"
   ],

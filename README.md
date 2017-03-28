@@ -578,14 +578,14 @@ Copyright &copy; 2016&ndash;2017 Akim McMath. Licensed under the [MIT License][l
 
 [version-badge]: https://img.shields.io/npm/v/chai-iterator.svg?style=flat-square
 [license-badge]: https://img.shields.io/npm/l/chai-iterator.svg?style=flat-square
-[build-badge]: https://img.shields.io/travis/akim-mcmath/chai-iterator/master.svg?style=flat-square
-[coverage-badge]: https://img.shields.io/coveralls/akim-mcmath/chai-iterator/master.svg?style=flat-square&service=github
-[dependencies-badge]: https://img.shields.io/gemnasium/akim-mcmath/chai-iterator.svg?style=flat-square
+[build-badge]: https://img.shields.io/travis/mcmath/chai-iterator/master.svg?style=flat-square
+[coverage-badge]: https://img.shields.io/coveralls/mcmath/chai-iterator/master.svg?style=flat-square&service=github
+[dependencies-badge]: https://img.shields.io/gemnasium/mcmath/chai-iterator.svg?style=flat-square
 [npm]: https://www.npmjs.com/package/chai-iterator
 [license]: LICENSE
-[travis]: https://travis-ci.org/akim-mcmath/chai-iterator
-[coveralls]: https://coveralls.io/github/akim-mcmath/chai-iterator?branch=master
-[gemnasium]: https://gemnasium.com/akim-mcmath/chai-iterator
+[travis]: https://travis-ci.org/mcmath/chai-iterator
+[coveralls]: https://coveralls.io/github/mcmath/chai-iterator?branch=master
+[gemnasium]: https://gemnasium.com/mcmath/chai-iterator
 [chai]: http://chaijs.com/
 [iterable]: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Iteration_protocols#iterable
 [ecma-iterable]: http://www.ecma-international.org/ecma-262/6.0/#sec-iterable-interface
