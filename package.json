@@ -12,7 +12,6 @@
     "test:cover": "istanbul cover _mocha",
     "test:report": "npm run test:cover && open coverage/lcov-report/index.html",
     "test": "npm run test:tsc && npm run test:eslint && npm run test:cover",
-    "typings": "typings install",
     "coveralls": "cat coverage/lcov.info | coveralls"
   },
   "repository": {
@@ -30,8 +29,7 @@
     "yield",
     "es6",
     "es2015",
-    "typescript",
-    "typings"
+    "typescript"
   ],
   "engines": {
     "node": ">=4.0"
