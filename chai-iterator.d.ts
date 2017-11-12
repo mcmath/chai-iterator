@@ -45,5 +45,5 @@ declare global {
 }
 
 declare function chaiIterator(chai: any, utils: any): void;
-
+declare namespace chaiIterator {}
 export = chaiIterator;
