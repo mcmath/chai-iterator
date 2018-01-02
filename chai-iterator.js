@@ -65,8 +65,8 @@
 
   Assertion.overwriteChainableMethod('lengthOf', function(_super) {
     return function(exp) {
-        if (utils.flag(this, 'iterate')) {
-          var len = iterableLength(this._obj, exp);
+      if (utils.flag(this, 'iterate')) {
+        var len = iterableLength(this._obj, exp);
 
         this.assert(
           len === exp,
