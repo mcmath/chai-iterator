@@ -63,7 +63,7 @@
 
   Assertion.addProperty('for', noop);
 
-  Assertion.overwriteMethod('lengthOf', function(_super) {
+  Assertion.overwriteChainableMethod('lengthOf', function(_super) {
     return function(exp) {
         if (utils.flag(this, 'iterate')) {
           var len = iterableLength(this._obj, exp);
@@ -79,6 +79,10 @@
       } else {
         _super.apply(this, arguments);
       }
+    };
+  }, function(_super) {
+    return function() {
+      _super.apply(this);
     };
   });
 
